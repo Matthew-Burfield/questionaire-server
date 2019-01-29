@@ -8,6 +8,8 @@
     "graphql-yoga": "1.17.1"
   },
   "scripts": {
-    "start": "node ./src/index.js"
+    "start": "node ./src/index.js",
+    "deploy": "now",
+    "postdeploy": "now alias"
   }
 }
