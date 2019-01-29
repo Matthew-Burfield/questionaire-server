@@ -1,0 +1,13 @@
+{
+  "name": "questionaire-server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Matthew Burfield <burfie@hotmail.com> (https://matthew-burfield.github.io/)",
+  "license": "MIT",
+  "dependencies": {
+    "graphql-yoga": "1.17.1"
+  },
+  "scripts": {
+    "start": "node ./src/index.js"
+  }
+}
