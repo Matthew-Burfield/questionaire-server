@@ -82,4 +82,7 @@ const server = new GraphQLServer({
   resolvers
 });
 
-server.start(() => console.log("Server is running on http://localhost:4000"));
+server.start(
+  { cors: { credentials: true, origin: "http://localhost:3000" } },
+  () => console.log("Server is running on http://localhost:4000")
+);
