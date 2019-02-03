@@ -10,6 +10,21 @@
   "scripts": {
     "start": "node ./src/index.js",
     "deploy": "now",
-    "postdeploy": "now alias"
+    "postdeploy": "now alias",
+    "test": "yarn jest"
+  },
+  "devDependencies": {
+    "jest": "24.0.0"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "testPathIgnorePatterns": [
+      "/node_modules",
+      "./dist"
+    ],
+    "coverageReports": [
+      "lcov",
+      "html"
+    ]
   }
 }
