@@ -1,11 +1,7 @@
 {
   "version": 2,
-  "builds": [{ "src": "src/index.js", "use": "@now/node-server" }],
+  "name": "questionaire-server",
   "alias": ["burfield-questionaire-server"],
-  "routes": [
-    {
-      "src": "/.*",
-      "dest": "/index.ts"
-    }
-  ]
+  "builds": [{ "src": "index.js", "use": "@now/node-server" }],
+  "routes": [{ "src": "/.*", "dest": "index.js" }]
 }

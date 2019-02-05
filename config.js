@@ -3,13 +3,12 @@ const endpoint =
     ? "https://burfield-questionaire-server.now.sh"
     : "http://localhost:4000";
 
-const origin = (process.env.NODE_ENV = "production"
-  ? "https://burfield-questionaire.now.sh"
-  : "http://localhost:3000");
-
-const cors = { cors: { credentials: true, origin } };
+const origin =
+  process.env.NODE_ENV === "production"
+    ? "https://burfield-questionaire.now.sh"
+    : "http://localhost:3000";
 
 module.exports = {
-  cors,
-  endpoint
+  endpoint,
+  origin
 };
