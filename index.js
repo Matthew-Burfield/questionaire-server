@@ -102,4 +102,18 @@ const server = new GraphQLServer({
   typeDefs,
   resolvers
 });
-server.start(() => console.log("🚀 Server is running on localhost:4000"));
+
+const origin =
+  process.env.NODE_ENV === "production"
+    ? "https://burfield-questionaire.now.sh"
+    : "http://localhost:3000";
+
+server.start(
+  {
+    cors: {
+      origin,
+      credentials: true
+    }
+  },
+  () => console.log("🚀 Server is running on localhost:4000")
+);
