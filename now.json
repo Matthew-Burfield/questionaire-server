@@ -3,5 +3,8 @@
   "name": "questionaire-server",
   "alias": ["burfield-questionaire-server"],
   "builds": [{ "src": "index.js", "use": "@now/node-server" }],
-  "routes": [{ "src": "/.*", "dest": "index.js" }]
+  "routes": [
+    { "src": "/.graphql", "dest": "schema.graphql" },
+    { "src": "/.*", "dest": "index.js" }
+  ]
 }

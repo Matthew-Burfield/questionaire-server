@@ -77,29 +77,8 @@ const resolvers = {
   }
 };
 
-const typeDefs = `
-  type Query {
-    question(id: ID!): Question
-    questions: [Question!]!
-  }
-
-  type Mutation {
-    addQuestion(question: String!): Question!
-  }
-
-  type Question {
-    id: ID!
-    sessionId: ID
-    question: String!
-    thumbsUpCount: Int
-    thumbsDownCount: Int
-    hasBeenAsked: Boolean
-    hasBeenApproved: Boolean
-  }
-`;
-
 const server = new GraphQLServer({
-  typeDefs,
+  typeDefs: __dirname + "/schema.graphql",
   resolvers
 });
 
