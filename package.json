@@ -5,16 +5,19 @@
   "author": "Matthew Burfield <burfie@hotmail.com> (https://matthew-burfield.github.io/)",
   "license": "MIT",
   "dependencies": {
-    "graphql-yoga": "1.17.1"
+    "graphql-yoga": "1.17.1",
+    "prisma-client-lib": "1.26.5"
   },
   "scripts": {
-    "start": "node .",
+    "start": "ts-node index.ts",
     "deploy": "now",
     "postdeploy": "now alias",
     "test": "yarn jest"
   },
   "devDependencies": {
-    "jest": "24.0.0"
+    "jest": "24.0.0",
+    "ts-node": "8.0.2",
+    "typescript": "3.3.3"
   },
   "jest": {
     "testEnvironment": "node",
@@ -26,5 +29,18 @@
       "lcov",
       "html"
     ]
-  }
+  },
+  "description": "Questionaire server",
+  "directories": {
+    "test": "tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Matthew-Burfield/questionaire-server.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/Matthew-Burfield/questionaire-server/issues"
+  },
+  "homepage": "https://github.com/Matthew-Burfield/questionaire-server#readme"
 }
