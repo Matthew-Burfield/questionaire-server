@@ -1,18 +1,34 @@
 type Query {
-  question(id: ID!): Question
-  questions: [Question!]!
+  publishedPosts: [Post!]!
+  post(postId: ID!): Post
+  postsByUser(userId: ID!): [Post!]!
+	questions: [Question]!
 }
 
 type Mutation {
-  addQuestion(question: String!): Question!
+  createUser(name: String!): User
+  createDraft(title: String!, userId: ID!): Post
+  publish(postId: ID!): Post
+	createQuestion(question: String!): Question
+}
+
+type User {
+  id: ID!
+  email: String
+  name: String!
+  posts: [Post!]!
+}
+
+type Post {
+  id: ID!
+  title: String!
+  published: Boolean!
+  author: User
 }
 
 type Question {
-  id: ID!
-  sessionId: ID
-  question: String!
-  thumbsUpCount: Int
-  thumbsDownCount: Int
-  hasBeenAsked: Boolean
-  hasBeenApproved: Boolean
+	id: ID!
+	question: String!
+	thumbsUp: Int
+	thumbsDown: Int
 }

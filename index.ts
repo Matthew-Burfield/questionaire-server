@@ -1,15 +1,77 @@
 import { prisma } from './generated/prisma-client'
+import { GraphQLServer } from 'graphql-yoga'
 
-// A `main` function so that we can use async/await
-async function main() {
+const resolvers = {
+  Query: {
+    publishedPosts(parent, args, context) {
+      return context.prisma.posts({ where: { published: true } })
+    },
+    post(parent, args, context) {
+      return context.prisma.post({ id: args.postId })
+    },
+    postsByUser(parent, args, context) {
+      return context.prisma.user({
+        id: args.userId
+      }).posts()
+		},
+		questions(parent, args, context) {
+			return context.prisma.questions()
+		}
+  },
+  Mutation: {
+    createDraft(parent, args, context) {
+      return context.prisma.createPost(
+        {
+          title: args.title,
+          author: {
+            connect: { id: args.userId }
+          }
+        },
 
-  // Create a new user called `Alice`
-  const newUser = await prisma.createUser({ name: 'Alice' })
-  console.log(`Created new user: ${newUser.name} (ID: ${newUser.id})`)
+      )
+    },
+    publish(parent, args, context) {
+      return context.prisma.updatePost(
+        {
+          where: { id: args.postId },
+          data: { published: true },
+        },
 
-  // Read all users from the database and print them to the console
-  const allUsers = await prisma.users()
-  console.log(allUsers)
+      )
+    },
+    createUser(parent, args, context) {
+      return context.prisma.createUser(
+        { name: args.name },
+      )
+    },
+    createQuestion(parent, args, context) {
+      return context.prisma.createQuestion(
+				{ question: args.question,
+				thumbsUp: 0, thumbsDown: 0 },
+      )
+    }
+  },
+  User: {
+    posts(parent, args, context) {
+      return context.prisma.user({
+        id: parent.id
+      }).posts()
+    }
+  },
+  Post: {
+    author(parent, args, context) {
+      return context.prisma.post({
+        id: parent.id
+      }).author()
+    }
+  }
 }
 
-main().catch(e => console.error(e))
+const server = new GraphQLServer({
+  typeDefs: './schema.graphql',
+  resolvers,
+  context: {
+    prisma
+  },
+})
+server.start(() => console.log('Server is running on http://localhost:4000'))
