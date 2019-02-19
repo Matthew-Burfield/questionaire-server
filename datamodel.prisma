@@ -13,8 +13,11 @@ type Post {
 }
 
 type Question {
-	id: ID! @unique
-	question: String!
-	thumbsUp: Int
-	thumbsDown: Int
+  id: ID! @unique
+  sessionId: Int
+  question: String!
+  thumbsUpCount: Int! @default(value: 0)
+  thumbsDownCount: Int! @default(value: 0)
+  hasBeenAsked: Boolean! @default(value: "false")
+  hasBeenApproved: Boolean! @default(value: "false")
 }

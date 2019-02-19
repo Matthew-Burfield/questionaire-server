@@ -46,8 +46,7 @@ const resolvers = {
     },
     createQuestion(parent, args, context) {
       return context.prisma.createQuestion(
-				{ question: args.question,
-				thumbsUp: 0, thumbsDown: 0 },
+				{ question: args.question },
       )
     }
   },

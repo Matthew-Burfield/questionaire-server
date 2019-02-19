@@ -27,8 +27,11 @@ type Post {
 }
 
 type Question {
-	id: ID!
-	question: String!
-	thumbsUp: Int
-	thumbsDown: Int
+  id: ID!
+  sessionId: Int
+  question: String!
+  thumbsUpCount: Int!
+  thumbsDownCount: Int!
+  hasBeenAsked: Boolean!
+  hasBeenApproved: Boolean!
 }
