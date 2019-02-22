@@ -2,14 +2,16 @@ type Query {
   publishedPosts: [Post!]!
   post(postId: ID!): Post
   postsByUser(userId: ID!): [Post!]!
-	questions: [Question]!
+  questions: [Question]!
 }
 
 type Mutation {
   createUser(name: String!): User
   createDraft(title: String!, userId: ID!): Post
   publish(postId: ID!): Post
-	createQuestion(question: String!): Question
+  createQuestion(question: String!): Question
+  increaseScore(questionId: ID!): Question
+  decreaseScore(questionId: ID!): Question
 }
 
 type User {
