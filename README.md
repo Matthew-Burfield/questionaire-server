@@ -5,3 +5,4 @@ Questionaire server
 18-Feb - Tried starting from scratch without typescript. Haven't got the server to be able to start yet.
 22-Feb - Yesterday got the server working properly with typescript and using the local docker database. Frontend now links up too with query and mutations
 23 Feb - Spent some time this morning trying to set up a sql server that I can link the production env to
+24 Feb - Didn't actually do anything today but want to keep the streak alive!
