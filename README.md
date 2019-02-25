@@ -6,3 +6,4 @@ Questionaire server
 22-Feb - Yesterday got the server working properly with typescript and using the local docker database. Frontend now links up too with query and mutations
 23 Feb - Spent some time this morning trying to set up a sql server that I can link the production env to
 24 Feb - Didn't actually do anything today but want to keep the streak alive!
+25 Feb - Another long day today which meant I couldn't make any updates. Should be back into the swing of things tomorrow.
